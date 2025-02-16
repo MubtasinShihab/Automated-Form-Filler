@@ -17,7 +17,7 @@ from fpdf import FPDF
 # ============================
 # Step 1: Set up your API key
 # ============================
-API_KEY = "AIzaSyA06OiUZsA6TvpdlgRUIMGvJ9zfKa7o1T0"  # Replace with your actual key
+API_KEY = "AIzaSyC-un51IS-lC-E-JJsWVaSIb1Xg-N2Uf8Q"
 genai.configure(api_key=API_KEY)
 
 # ============================
@@ -107,6 +107,7 @@ def extract_text_from_images(temp_dir):
     """
     all_files = glob.glob(os.path.join(temp_dir, "*"))
     aggregated_text = ""
+    
     for file_path in all_files:
         try:
             img = Image.open(file_path)
@@ -261,6 +262,7 @@ Here is the extracted content:
 {aggregated_text}
 >>>
 """
+    
     try:
         profile_response = model.generate_content(profile_prompt)
         cleaned_response = clean_json_response(profile_response.text.strip())
